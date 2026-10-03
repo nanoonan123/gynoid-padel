@@ -104,6 +104,7 @@
   const prevBtn = $('#sliderPrev');
   const nextBtn = $('#sliderNext');
   const navButtons = $$('.solution-link');
+  const slideCount = $('#slideCount');
   let currentSlide = 0;
   let startX = 0;
   let deltaX = 0;
@@ -119,6 +120,7 @@
 
   const updateSliderUI = () => {
     sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    if (slideCount) slideCount.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
     slides.forEach((slide, idx) => slide.classList.toggle('is-active', idx === currentSlide));
     dots.forEach((dot, idx) => dot.classList.toggle('is-active', idx === currentSlide));
     navButtons.forEach((btn, idx) => btn.classList.toggle('is-active', idx === currentSlide));
@@ -136,6 +138,33 @@
     const target = Number(el.dataset.slideTarget);
     if (!Number.isNaN(target)) goToSlide(target);
   }));
+
+
+  // Desktop drag/swipe support.
+  let pointerDragging = false;
+  let pointerStartX = 0;
+  let pointerDeltaX = 0;
+  sliderTrack?.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'touch') return;
+    pointerDragging = true;
+    pointerStartX = e.clientX;
+    pointerDeltaX = 0;
+    sliderTrack.setPointerCapture?.(e.pointerId);
+  });
+  sliderTrack?.addEventListener('pointermove', (e) => {
+    if (!pointerDragging) return;
+    pointerDeltaX = e.clientX - pointerStartX;
+  });
+  const finishPointerDrag = (e) => {
+    if (!pointerDragging) return;
+    pointerDragging = false;
+    if (Math.abs(pointerDeltaX) > 60) {
+      pointerDeltaX < 0 ? goToSlide(currentSlide + 1) : goToSlide(currentSlide - 1);
+    }
+    try { sliderTrack.releasePointerCapture?.(e.pointerId); } catch {}
+  };
+  sliderTrack?.addEventListener('pointerup', finishPointerDrag);
+  sliderTrack?.addEventListener('pointercancel', finishPointerDrag);
 
   sliderTrack?.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;

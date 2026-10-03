@@ -1,45 +1,18 @@
-# Gynoid Web V9
+# Gynoid Web V11
 
-Versión con configurador 3D real basado en Three.js.
+Versión refinada para GitHub Pages.
 
-## Qué cambia respecto a V8
+## Cambios principales
+- Hero más simple y visual.
+- Soluciones más arriba y carrusel más claro, con arrastre/swipe en desktop y móvil.
+- Menos ruido dentro de cada slide y detalles opcionales desplegables.
+- Imagen de Solar Glass corregida para que corresponda con la funcionalidad.
+- Configurador 3D con selector móvil rediseñado: panel inferior compacto, sin desenfoque global y con el visor aún visible.
+- Lenguaje de marca más firme: sin expresiones como “lo importante” o “propuesta de Gynoid”.
+- UI móvil más limpia y coherente.
 
-La V8 simulaba una pista 3D usando elementos HTML/CSS transformados. En V9 el configurador usa WebGL mediante Three.js y construye una pista de pádel con geometría 3D real.
+## Publicación
+Sube el contenido de esta carpeta a tu repositorio y activa GitHub Pages.
 
-Cada selector controla un grupo 3D independiente:
-
-- Techo retráctil: estructura y paneles superiores.
-- Gynoid AI: cámaras, conos de visión y HUD de analítica.
-- Media LED: paneles digitales luminosos en los cerramientos.
-- Smart Access: tótem, lector y puerta de acceso.
-- Solar Glass: paneles fotovoltaicos visibles sobre la pista.
-- Premium Comfort: bancos, lounge y minibar.
-- Club / Resort / Urban: cambia el entorno tridimensional.
-- Day / Night: cambia iluminación, fondo y exposición.
-
-El visor permite:
-
-- Arrastrar para rotar.
-- Rueda del ratón para zoom.
-- Pinch en móvil para zoom.
-- Doble clic o botón para restablecer la vista.
-
-## Three.js
-
-El motor 3D se carga como módulo ES desde jsDelivr:
-
-`https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js`
-
-Por tanto, para verlo en local se recomienda usar VS Code Live Server o:
-
-```bash
-python -m http.server 8000
-```
-
-Y abrir `http://localhost:8000`.
-
-Al publicarlo en GitHub Pages funcionará directamente.
-
-## Contacto
-
+## Configuración
 Edita `js/config.js` para cambiar email y WhatsApp.
