@@ -1,237 +1,295 @@
 (() => {
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+  // YEAR + CONTACT CONFIG
+  $('#year').textContent = new Date().getFullYear();
   const config = window.GYNOID_CONFIG || {};
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const email = config.email || 'hello@gynoid.com';
+  const whatsapp = config.whatsapp || '#';
+  $('#emailCta').href = `mailto:${email}`;
+  $('#emailText').textContent = email;
+  $('#whatsappCta').href = whatsapp;
+  $('#whatsappCta').textContent = config.whatsappLabel || 'WhatsApp';
 
-  const year = document.getElementById('year');
-  if (year) year.textContent = new Date().getFullYear();
-
-  // Header + progress
-  const topbar = document.querySelector('.topbar');
-  const progress = document.getElementById('scrollProgress');
-  const heroImage = document.querySelector('.hero-image');
-
-  const onScroll = () => {
-    const y = window.scrollY;
-    topbar?.classList.toggle('scrolled', y > 24);
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    if (progress) progress.style.width = `${max > 0 ? (y / max) * 100 : 0}%`;
-    if (heroImage && !reduceMotion && y < window.innerHeight * 1.1) {
-      heroImage.style.transform = `scale(1.035) translateY(${y * 0.035}px)`;
-    }
+  // SCROLL PROGRESS
+  const progressBar = $('#progressBar');
+  const updateProgress = () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+    progressBar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
 
-  // Reveal on scroll
-  const reveals = [...document.querySelectorAll('.reveal')];
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    reveals.forEach(el => el.classList.add('visible'));
-  } else {
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
-    reveals.forEach(el => revealObserver.observe(el));
-  }
-
-  // Side menu
-  const menuToggle = document.getElementById('menuToggle');
-  const menuClose = document.getElementById('menuClose');
-  const sideMenu = document.getElementById('sideMenu');
-  const menuBackdrop = document.getElementById('menuBackdrop');
-
-  const setMenu = open => {
-    sideMenu?.classList.toggle('open', open);
-    sideMenu?.setAttribute('aria-hidden', String(!open));
-    menuToggle?.setAttribute('aria-expanded', String(open));
-    document.body.classList.toggle('menu-open', open);
-    if (menuBackdrop) menuBackdrop.hidden = !open;
-  };
-
-  menuToggle?.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
-  menuClose?.addEventListener('click', () => setMenu(false));
-  menuBackdrop?.addEventListener('click', () => setMenu(false));
-  window.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-  sideMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
-
-  // Solutions slider
-  const track = document.getElementById('sliderTrack');
-  const slides = [...document.querySelectorAll('.solution-slide')];
-  const prev = document.getElementById('sliderPrev');
-  const next = document.getElementById('sliderNext');
-  const dots = document.getElementById('sliderDots');
-  const viewport = document.querySelector('.slider-viewport');
-  let activeSlide = 0;
-  let pointerStart = null;
-
-  if (dots && slides.length) {
-    dots.innerHTML = slides.map((_, i) => `<button type="button" aria-label="Ir a solución ${i + 1}" data-slide-dot="${i}"></button>`).join('');
-  }
-  const dotButtons = [...document.querySelectorAll('[data-slide-dot]')];
-
-  const goToSlide = index => {
-    if (!slides.length || !track) return;
-    activeSlide = (index + slides.length) % slides.length;
-    track.style.transform = `translate3d(-${activeSlide * 100}%,0,0)`;
-    dotButtons.forEach((dot, i) => dot.classList.toggle('is-active', i === activeSlide));
-    slides.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== activeSlide)));
-  };
-
-  prev?.addEventListener('click', () => goToSlide(activeSlide - 1));
-  next?.addEventListener('click', () => goToSlide(activeSlide + 1));
-  dotButtons.forEach(dot => dot.addEventListener('click', () => goToSlide(Number(dot.dataset.slideDot))));
-
-  viewport?.addEventListener('pointerdown', e => {
-    pointerStart = { x: e.clientX, y: e.clientY };
-  });
-  viewport?.addEventListener('pointerup', e => {
-    if (!pointerStart) return;
-    const dx = e.clientX - pointerStart.x;
-    const dy = e.clientY - pointerStart.y;
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) goToSlide(activeSlide + (dx < 0 ? 1 : -1));
-    pointerStart = null;
-  });
-  viewport?.addEventListener('pointercancel', () => { pointerStart = null; });
-  goToSlide(0);
-
-  // Side menu links can target a slide
-  document.querySelectorAll('[data-slide-target]').forEach(link => {
-    link.addEventListener('click', () => {
-      const target = Number(link.dataset.slideTarget);
-      window.setTimeout(() => goToSlide(target), 300);
+  // REVEAL
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.12 });
+  $$('.reveal').forEach(el => revealObserver.observe(el));
+
+  // MENU
+  const sideMenu = $('#sideMenu');
+  const menuOverlay = $('#menuOverlay');
+  const menuToggle = $('#menuToggle');
+  const menuClose = $('#menuClose');
+  const openMenu = () => {
+    sideMenu.classList.add('is-open');
+    sideMenu.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuOverlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+  const closeMenu = () => {
+    sideMenu.classList.remove('is-open');
+    sideMenu.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuOverlay.hidden = true;
+    document.body.style.overflow = '';
+  };
+  menuToggle?.addEventListener('click', openMenu);
+  menuClose?.addEventListener('click', closeMenu);
+  menuOverlay?.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+  $$('.side-nav a').forEach(link => link.addEventListener('click', closeMenu));
+
+  // SIDE ACCORDION
+  const solutionsToggle = $('#solutionsToggle');
+  const solutionsSubmenu = $('#solutionsSubmenu');
+  solutionsToggle?.addEventListener('click', () => {
+    const expanded = solutionsToggle.getAttribute('aria-expanded') === 'true';
+    solutionsToggle.setAttribute('aria-expanded', String(!expanded));
+    solutionsSubmenu.classList.toggle('is-collapsed', expanded);
   });
 
-  // Configurator
-  const scene = document.getElementById('scene');
-  const court3d = document.querySelector('.court3d');
-  const contextButtons = [...document.querySelectorAll('[data-context]')];
-  const themeButtons = [...document.querySelectorAll('[data-theme]')];
-  const featureInputs = [...document.querySelectorAll('[data-feature]')];
-  const configTitle = document.getElementById('configTitle');
-  const configText = document.getElementById('configText');
-  const configChips = document.getElementById('configChips');
+  // SOLUTIONS SLIDER
+  const sliderTrack = $('#sliderTrack');
+  const slides = $$('.slide-card', sliderTrack);
+  const dotsWrap = $('#sliderDots');
+  const prevBtn = $('#sliderPrev');
+  const nextBtn = $('#sliderNext');
+  const navButtons = $$('.solution-link');
+  let currentSlide = 0;
+  let startX = 0;
+  let deltaX = 0;
 
-  let currentContext = 'club';
-  let currentTheme = 'night';
-  let rotX = 60;
-  let rotZ = -42;
-  let dragState = null;
+  slides.forEach((slide, idx) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Ir a la solución ${idx + 1}`);
+    dot.addEventListener('click', () => goToSlide(idx));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = $$('button', dotsWrap);
+
+  const updateSliderUI = () => {
+    sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    slides.forEach((slide, idx) => slide.classList.toggle('is-active', idx === currentSlide));
+    dots.forEach((dot, idx) => dot.classList.toggle('is-active', idx === currentSlide));
+    navButtons.forEach((btn, idx) => btn.classList.toggle('is-active', idx === currentSlide));
+  };
+
+  const goToSlide = (index) => {
+    currentSlide = (index + slides.length) % slides.length;
+    updateSliderUI();
+  };
+
+  prevBtn?.addEventListener('click', () => goToSlide(currentSlide - 1));
+  nextBtn?.addEventListener('click', () => goToSlide(currentSlide + 1));
+  navButtons.forEach(btn => btn.addEventListener('click', () => goToSlide(Number(btn.dataset.slideTarget))));
+  $$('[data-slide-target]').forEach(el => el.addEventListener('click', (e) => {
+    const target = Number(el.dataset.slideTarget);
+    if (!Number.isNaN(target)) goToSlide(target);
+  }));
+
+  sliderTrack?.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    deltaX = 0;
+  }, { passive: true });
+  sliderTrack?.addEventListener('touchmove', (e) => {
+    deltaX = e.touches[0].clientX - startX;
+  }, { passive: true });
+  sliderTrack?.addEventListener('touchend', () => {
+    if (Math.abs(deltaX) > 50) {
+      deltaX < 0 ? goToSlide(currentSlide + 1) : goToSlide(currentSlide - 1);
+    }
+  });
+  updateSliderUI();
+
+  // CONFIGURATOR
+  const scene = $('#scene');
+  const featureInputs = $$('[data-feature]');
+  const contextButtons = $$('[data-context]', $('#contextSelector'));
+  const themeButtons = $$('[data-theme]', $('#themeSelector'));
+  const configTitle = $('#configTitle');
+  const configText = $('#configText');
+  const configTags = $('#configTags');
+  const sceneBadge = $('#sceneBadge');
+  const sceneTitle = $('#sceneTitle');
+  const sceneDescription = $('#sceneDescription');
+  const courtModel = $('#courtModel');
+
+  const state = {
+    context: 'club',
+    theme: 'night',
+    roof: true,
+    ai: true,
+    media: false,
+    access: true,
+    energy: false,
+    lounge: false,
+  };
 
   const labels = {
-    roof: 'Roof',
-    ai: 'AI',
-    media: 'Media',
-    access: 'Access',
-    energy: 'Solar',
-    lounge: 'Comfort'
+    roof: 'Techo retráctil',
+    ai: 'Gynoid AI',
+    media: 'Media LED',
+    access: 'Smart Access',
+    energy: 'Solar Glass',
+    lounge: 'Premium Comfort',
   };
 
-  const contextCopy = {
-    club: {
-      title: 'Club Connected',
-      base: 'Una pista premium conectada para elevar experiencia y operación del club.'
-    },
-    resort: {
-      title: 'Resort Signature',
-      base: 'Una configuración enfocada en hospitality, impacto visual y confort premium.'
-    },
-    urban: {
-      title: 'Urban Flagship',
-      base: 'Una pista icónica para proyectos urbanos donde tecnología y marca deben destacar.'
-    }
+  const contextNames = {
+    club: 'Club',
+    resort: 'Resort',
+    urban: 'Urban',
   };
 
-  const activeFeatures = () => featureInputs.filter(input => input.checked).map(input => input.dataset.feature);
-
-  const updateConfigCopy = () => {
-    const active = activeFeatures();
-    const copy = contextCopy[currentContext];
-    if (configTitle) configTitle.textContent = copy.title;
-
-    let extra = '';
-    if (active.includes('media')) extra += ' Media LED añade activaciones, publicidad y eventos.';
-    if (active.includes('ai')) extra += ' Gynoid AI convierte el juego en datos y contenido.';
-    if (active.includes('energy')) extra += ' Solar Glass refuerza la capa energética y sostenible.';
-    if (active.includes('lounge')) extra += ' Premium Comfort eleva la experiencia fuera de pista.';
-    if (active.includes('roof')) extra += ' El techo retráctil amplía la flexibilidad de uso.';
-    if (configText) configText.textContent = copy.base + extra;
-    if (configChips) {
-      configChips.innerHTML = ['Premium Court', ...active.map(key => labels[key])].map(item => `<span>${item}</span>`).join('');
-    }
+  const descriptorFromState = () => {
+    if (state.media && state.lounge) return 'Showcase';
+    if (state.energy) return 'Sustainable';
+    if (state.ai && state.access) return 'Connected';
+    if (state.roof) return 'Performance';
+    return 'Signature';
   };
 
-  const updateScene = () => {
-    if (!scene) return;
-    scene.dataset.context = currentContext;
-    scene.dataset.theme = currentTheme;
+  const buildDescription = () => {
+    const active = Object.keys(labels).filter(key => state[key]);
+    if (!active.length) return 'Una pista premium minimalista lista para personalizar con nuevas capas.';
+    const top = active.slice(0, 3).map(key => labels[key]);
+    const joined = top.length === 1 ? top[0] : `${top.slice(0, -1).join(', ')} y ${top[top.length - 1]}`;
+
+    const contextLine = {
+      club: 'Pensada para clubes que quieren elevar la experiencia de juego y operación.',
+      resort: 'Ideal para hospitality y proyectos que necesitan impacto visual.',
+      urban: 'Perfecta para ubicaciones urbanas, rooftops y espacios singulares.',
+    }[state.context];
+
+    return `${joined} activos. ${contextLine}`;
+  };
+
+  const updateTagList = () => {
+    configTags.innerHTML = '';
+    const tags = [contextNames[state.context], state.theme === 'night' ? 'Night' : 'Day'];
+    Object.entries(labels).forEach(([key, label]) => {
+      if (state[key]) tags.push(label);
+    });
+    tags.forEach(text => {
+      const span = document.createElement('span');
+      span.textContent = text;
+      configTags.appendChild(span);
+    });
+  };
+
+  const updateSegments = () => {
+    contextButtons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.context === state.context));
+    themeButtons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.theme === state.theme));
     featureInputs.forEach(input => {
-      scene.dataset[`feature${input.dataset.feature.charAt(0).toUpperCase()}${input.dataset.feature.slice(1)}`] = input.checked ? 'on' : 'off';
+      input.checked = !!state[input.dataset.feature];
+      input.closest('.toggle-card')?.classList.toggle('is-on', input.checked);
     });
-    updateConfigCopy();
   };
 
-  contextButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      currentContext = button.dataset.context;
-      contextButtons.forEach(b => b.classList.toggle('is-active', b === button));
-      updateScene();
-    });
-  });
+  const applyState = () => {
+    scene.dataset.context = state.context;
+    scene.dataset.theme = state.theme;
+    scene.dataset.roof = state.roof ? 'on' : 'off';
+    scene.dataset.ai = state.ai ? 'on' : 'off';
+    scene.dataset.media = state.media ? 'on' : 'off';
+    scene.dataset.access = state.access ? 'on' : 'off';
+    scene.dataset.energy = state.energy ? 'on' : 'off';
+    scene.dataset.lounge = state.lounge ? 'on' : 'off';
 
-  themeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      currentTheme = button.dataset.theme;
-      themeButtons.forEach(b => b.classList.toggle('is-active', b === button));
-      updateScene();
-    });
-  });
+    const descriptor = descriptorFromState();
+    configTitle.textContent = `${contextNames[state.context]} ${descriptor}`;
+    configText.textContent = buildDescription();
+    sceneBadge.textContent = `${contextNames[state.context]} · ${state.theme === 'night' ? 'Night' : 'Day'}`;
+    sceneTitle.textContent = {
+      club: `${contextNames[state.context]} ${descriptor.toLowerCase()} setup`,
+      resort: 'Resort signature court',
+      urban: 'Urban landmark court',
+    }[state.context];
+    sceneDescription.textContent = buildDescription();
 
-  featureInputs.forEach(input => input.addEventListener('change', updateScene));
-
-  // Drag 3D court
-  const applyRotation = () => {
-    if (court3d) court3d.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg)`;
+    updateSegments();
+    updateTagList();
   };
 
-  scene?.addEventListener('pointerdown', e => {
-    if (e.target.closest('button, label, input, a')) return;
-    dragState = { x: e.clientX, y: e.clientY, rotX, rotZ };
-    scene.classList.add('dragging');
-    scene.setPointerCapture?.(e.pointerId);
-  });
-  scene?.addEventListener('pointermove', e => {
-    if (!dragState) return;
-    const dx = e.clientX - dragState.x;
-    const dy = e.clientY - dragState.y;
-    rotZ = Math.max(-75, Math.min(-10, dragState.rotZ + dx * 0.12));
-    rotX = Math.max(48, Math.min(72, dragState.rotX - dy * 0.08));
-    applyRotation();
-  });
-  const stopDrag = () => {
-    dragState = null;
-    scene?.classList.remove('dragging');
-  };
-  scene?.addEventListener('pointerup', stopDrag);
-  scene?.addEventListener('pointercancel', stopDrag);
-  applyRotation();
-  updateScene();
-
-  // Contact configuration
-  const contactLink = document.querySelector('[data-contact-email]');
-  if (contactLink) {
-    if (config.contactEmail) {
-      contactLink.href = `mailto:${config.contactEmail}?subject=${encodeURIComponent('Proyecto Gynoid')}`;
-      document.querySelector('.contact-note')?.remove();
-    } else {
-      contactLink.addEventListener('click', e => {
-        e.preventDefault();
-        alert('Añade el email real de Gynoid en js/config.js para activar el contacto.');
-      });
+  contextButtons.forEach(btn => btn.addEventListener('click', () => {
+    state.context = btn.dataset.context;
+    if (state.context === 'resort' && state.theme === 'night' && !state.media) {
+      // Resort often benefits from a slightly more showy setup, keep default state unchanged otherwise.
     }
-  }
+    applyState();
+  }));
+
+  themeButtons.forEach(btn => btn.addEventListener('click', () => {
+    state.theme = btn.dataset.theme;
+    applyState();
+  }));
+
+  featureInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      state[input.dataset.feature] = input.checked;
+      applyState();
+    });
+  });
+
+  applyState();
+
+  // DRAG TO ROTATE MODEL
+  let dragging = false;
+  let pointerStart = 0;
+  let startSpin = -28;
+  let currentSpin = -28;
+
+  const setSpin = (value) => {
+    const clamped = Math.max(-46, Math.min(6, value));
+    courtModel.style.setProperty('--spin', `${clamped}deg`);
+    currentSpin = clamped;
+  };
+  setSpin(currentSpin);
+
+  const pointerDown = (clientX) => {
+    dragging = true;
+    pointerStart = clientX;
+    startSpin = currentSpin;
+  };
+  const pointerMove = (clientX) => {
+    if (!dragging) return;
+    const delta = clientX - pointerStart;
+    setSpin(startSpin + delta * 0.12);
+  };
+  const pointerUp = () => { dragging = false; };
+
+  const stage = $('#courtShell');
+  stage?.addEventListener('mousedown', (e) => pointerDown(e.clientX));
+  window.addEventListener('mousemove', (e) => pointerMove(e.clientX));
+  window.addEventListener('mouseup', pointerUp);
+  stage?.addEventListener('touchstart', (e) => {
+    pointerDown(e.touches[0].clientX);
+  }, { passive: true });
+  stage?.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    pointerMove(e.touches[0].clientX);
+  }, { passive: true });
+  stage?.addEventListener('touchend', pointerUp);
 })();

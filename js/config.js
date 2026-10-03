@@ -1,6 +1,5 @@
 window.GYNOID_CONFIG = {
-  contactEmail: "",
-  instagram: "",
-  linkedin: "",
-  whatsapp: ""
+  email: 'hello@gynoid.com',
+  whatsapp: 'https://wa.me/34600000000',
+  whatsappLabel: 'WhatsApp'
 };

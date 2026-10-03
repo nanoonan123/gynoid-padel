@@ -1,36 +1,25 @@
-# Gynoid Web V7
+# Gynoid Web V8
 
-Versión simplificada y más comercial de la web de Gynoid.
+Versión estática preparada para GitHub Pages.
 
-## Objetivos de esta versión
-- Explicar visualmente qué ofrece Gynoid.
-- Reducir texto y duplicidades.
-- Priorizar conversión y contacto.
-- Mejorar navegación móvil y menú lateral.
-- Presentar las funcionalidades en slides visuales.
-- Hacer el configurador 3D claramente interactivo.
+## Estructura
 
-## Características
-- Logo GYNOID transparente, sin fondo sólido.
-- Hero más corto y directo.
-- Slider de 6 soluciones con swipe en móvil.
-- Menú lateral expandible/colapsable.
-- CTA de contacto fijo y CTA final.
-- Configurador 3D CSS/JavaScript con:
-  - contexto Club / Resort / Urban
-  - Day / Night
-  - techo retráctil
-  - Gynoid AI
-  - Media LED
-  - Smart Access
-  - Solar Glass
-  - Premium Comfort
-  - rotación manual arrastrando la pista
-- Responsive para móvil, tablet y escritorio.
+- `index.html`
+- `css/styles.css`
+- `js/config.js`
+- `js/main.js`
+- `assets/logo/...`
+- `assets/images/...`
+- `.nojekyll`
 
-## Publicación
-Es una web estática. No necesita Python, npm ni build.
-Sube la carpeta al repositorio y activa GitHub Pages.
+## Cómo publicar
 
-## Contacto
-Edita `js/config.js` y añade el email real de Gynoid.
+1. Sube el contenido del ZIP a tu repositorio.
+2. Activa GitHub Pages en la rama y carpeta correcta.
+3. Si quieres cambiar los datos de contacto, edita `js/config.js`.
+
+## Notas
+
+- La web está optimizada para móvil y escritorio.
+- El configurador 3D funciona sin librerías externas.
+- El menú lateral, el slider y las animaciones están implementados con JavaScript nativo.
