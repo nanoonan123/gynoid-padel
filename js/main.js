@@ -44,22 +44,49 @@
     sideMenu.setAttribute('aria-hidden', 'false');
     menuToggle.setAttribute('aria-expanded', 'true');
     menuOverlay.hidden = false;
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('menu-open');
   };
   const closeMenu = () => {
     sideMenu.classList.remove('is-open');
     sideMenu.setAttribute('aria-hidden', 'true');
     menuToggle.setAttribute('aria-expanded', 'false');
     menuOverlay.hidden = true;
-    document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
   };
   menuToggle?.addEventListener('click', openMenu);
   menuClose?.addEventListener('click', closeMenu);
   menuOverlay?.addEventListener('click', closeMenu);
+
+  // MOBILE CONFIG SHEET
+  const mobileConfigToggle = $('#mobileConfigToggle');
+  const configOverlay = $('#configOverlay');
+  const configSheetClose = $('#configSheetClose');
+  const configPanel = $('#configPanel');
+  const openConfigSheet = () => {
+    if (window.innerWidth > 640) return;
+    configOverlay.hidden = false;
+    document.body.classList.add('config-open');
+  };
+  const closeConfigSheet = () => {
+    configOverlay.hidden = true;
+    document.body.classList.remove('config-open');
+  };
+  mobileConfigToggle?.addEventListener('click', openConfigSheet);
+  configSheetClose?.addEventListener('click', closeConfigSheet);
+  configOverlay?.addEventListener('click', closeConfigSheet);
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Escape') {
+      closeMenu();
+      closeConfigSheet();
+    }
   });
-  $$('.side-nav a').forEach(link => link.addEventListener('click', closeMenu));
+
+  const navLinks = $$('.side-nav a, .side-cta a');
+  navLinks.forEach(link => link.addEventListener('click', () => {
+    closeMenu();
+    closeConfigSheet();
+  }));
 
   // SIDE ACCORDION
   const solutionsToggle = $('#solutionsToggle');
@@ -105,7 +132,7 @@
   prevBtn?.addEventListener('click', () => goToSlide(currentSlide - 1));
   nextBtn?.addEventListener('click', () => goToSlide(currentSlide + 1));
   navButtons.forEach(btn => btn.addEventListener('click', () => goToSlide(Number(btn.dataset.slideTarget))));
-  $$('[data-slide-target]').forEach(el => el.addEventListener('click', (e) => {
+  $$('[data-slide-target]').forEach(el => el.addEventListener('click', () => {
     const target = Number(el.dataset.slideTarget);
     if (!Number.isNaN(target)) goToSlide(target);
   }));
@@ -124,4 +151,10 @@
   });
   updateSliderUI();
 
+  // Auto-close mobile config sheet when resizing to desktop.
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 640) {
+      closeConfigSheet();
+    }
+  });
 })();
