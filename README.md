@@ -1,53 +1,37 @@
-# Gynoid — static website
+# Gynoid Web — V3
 
-Landing page estática para **Gynoid / AI Court Ultimate™**.
+Landing page estática, sin framework y lista para GitHub Pages.
 
-## Estructura
+## Ejecutar en local
 
-- `index.html` — contenido y estructura.
-- `css/styles.css` — diseño responsive, animaciones y paleta visual.
-- `js/main.js` — menú móvil, scroll, animaciones, lightbox y configuración de contacto.
-- `js/config.js` — email y redes sociales.
-- `assets/images/` — imágenes optimizadas en WebP.
-- `favicon.svg` — favicon local.
-
-## Verla en local
-
-La opción más simple es abrir `index.html` en el navegador.
-
-Para un entorno local más parecido a producción:
+Abre `index.html` directamente o usa un servidor local:
 
 ```bash
-python3 -m http.server 8000
+python -m http.server 8000
 ```
 
 Después abre `http://localhost:8000`.
 
-## Configurar contacto
+## Configuración
 
-Edita `js/config.js`:
+En `js/config.js` puedes añadir:
 
-```js
-window.GYNOID_CONFIG = {
-  contactEmail: "tu-email@dominio.com",
-  instagram: "https://...",
-  linkedin: "https://...",
-  whatsapp: "https://wa.me/..."
-};
-```
+- email de contacto
+- Instagram
+- LinkedIn
+- WhatsApp
 
-Los enlaces sociales vacíos se ocultan automáticamente.
+## Publicar en GitHub Pages
 
-## GitHub Pages
+Sube **el contenido de esta carpeta** a la raíz del repositorio y activa GitHub Pages. No requiere npm, build ni backend.
 
-1. Sube todo el contenido de esta carpeta a la raíz del repositorio.
-2. En GitHub: **Settings → Pages**.
-3. En **Build and deployment**, selecciona **Deploy from a branch**.
-4. Selecciona `main` y `/ (root)`.
-5. Guarda.
+## V3
 
-No necesita npm, compilación, framework ni backend.
-
-## Antes de publicar
-
-Conviene confirmar con Gynoid qué afirmaciones comerciales, partners, certificaciones, cifras técnicas y funcionalidades están disponibles actualmente. La versión inicial evita deliberadamente la mayoría de claims absolutos del material conceptual.
+- Branding Gynoid mucho más visible.
+- Hero más premium y comercial.
+- Explorador interactivo de seis sistemas.
+- Módulos visuales específicos para Gynoid AI, Media y Access.
+- Secciones de Climate, Energy, negocio, experiencia y targets.
+- Microinteracciones, hovers, scroll reveal, parallax, HUDs y lightbox.
+- Responsive rediseñado para evitar desbordamientos.
+- Assets conceptuales recortados para reducir al máximo el texto de catálogo y dejar el contenido comercial en HTML.
