@@ -1,25 +1,45 @@
-# Gynoid Web V8
+# Gynoid Web V9
 
-Versión estática preparada para GitHub Pages.
+Versión con configurador 3D real basado en Three.js.
 
-## Estructura
+## Qué cambia respecto a V8
 
-- `index.html`
-- `css/styles.css`
-- `js/config.js`
-- `js/main.js`
-- `assets/logo/...`
-- `assets/images/...`
-- `.nojekyll`
+La V8 simulaba una pista 3D usando elementos HTML/CSS transformados. En V9 el configurador usa WebGL mediante Three.js y construye una pista de pádel con geometría 3D real.
 
-## Cómo publicar
+Cada selector controla un grupo 3D independiente:
 
-1. Sube el contenido del ZIP a tu repositorio.
-2. Activa GitHub Pages en la rama y carpeta correcta.
-3. Si quieres cambiar los datos de contacto, edita `js/config.js`.
+- Techo retráctil: estructura y paneles superiores.
+- Gynoid AI: cámaras, conos de visión y HUD de analítica.
+- Media LED: paneles digitales luminosos en los cerramientos.
+- Smart Access: tótem, lector y puerta de acceso.
+- Solar Glass: paneles fotovoltaicos visibles sobre la pista.
+- Premium Comfort: bancos, lounge y minibar.
+- Club / Resort / Urban: cambia el entorno tridimensional.
+- Day / Night: cambia iluminación, fondo y exposición.
 
-## Notas
+El visor permite:
 
-- La web está optimizada para móvil y escritorio.
-- El configurador 3D funciona sin librerías externas.
-- El menú lateral, el slider y las animaciones están implementados con JavaScript nativo.
+- Arrastrar para rotar.
+- Rueda del ratón para zoom.
+- Pinch en móvil para zoom.
+- Doble clic o botón para restablecer la vista.
+
+## Three.js
+
+El motor 3D se carga como módulo ES desde jsDelivr:
+
+`https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js`
+
+Por tanto, para verlo en local se recomienda usar VS Code Live Server o:
+
+```bash
+python -m http.server 8000
+```
+
+Y abrir `http://localhost:8000`.
+
+Al publicarlo en GitHub Pages funcionará directamente.
+
+## Contacto
+
+Edita `js/config.js` para cambiar email y WhatsApp.

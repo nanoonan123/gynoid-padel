@@ -243,67 +243,27 @@
       <div class="shell">
         <div class="section-head reveal">
           <span class="eyebrow">CONFIGURA TU PISTA</span>
-          <h2>Activa soluciones y observa un efecto real en la pista 3D.</h2>
-          <p>Cada selector cambia el modelo: cubierta, media, cámaras, acceso, energía, comfort y contexto.</p>
+          <h2>Un configurador 3D real, no una simulación CSS.</h2>
+          <p>Rota la pista, haz zoom y activa cada solución. Cada control añade o elimina geometría real del modelo.</p>
         </div>
 
         <div class="config-grid reveal">
-          <div class="config-stage glass-card">
-            <div class="scene" id="scene" data-theme="night" data-context="club" data-roof="on" data-ai="on" data-media="off" data-access="on" data-energy="off" data-lounge="off">
-              <div class="scene-bg bg-club"></div>
-              <div class="scene-bg bg-resort"></div>
-              <div class="scene-bg bg-urban"></div>
-              <div class="scene-glow"></div>
-              <div class="scene-sun"></div>
-
-              <div class="court-shell" id="courtShell">
-                <div class="court-model" id="courtModel">
-                  <div class="court-floor"></div>
-                  <i class="floor-line line-middle"></i>
-                  <i class="floor-line line-cross"></i>
-                  <i class="floor-line line-service-left"></i>
-                  <i class="floor-line line-service-right"></i>
-                  <div class="court-net"></div>
-
-                  <div class="court-wall back"></div>
-                  <div class="court-wall left"></div>
-                  <div class="court-wall right"></div>
-
-                  <div class="led-wall led-back"></div>
-                  <div class="led-wall led-left"></div>
-                  <div class="led-wall led-right"></div>
-
-                  <div class="roof-track left"></div>
-                  <div class="roof-track right"></div>
-                  <div class="roof-panel left"></div>
-                  <div class="roof-panel right"></div>
-                  <div class="solar-overlay left"></div>
-                  <div class="solar-overlay right"></div>
-
-                  <div class="camera cam-left"></div>
-                  <div class="camera cam-center"></div>
-                  <div class="camera cam-right"></div>
-                  <div class="beam beam-left"></div>
-                  <div class="beam beam-right"></div>
-                  <div class="hud-card">
-                    <span>AI ANALYTICS</span>
-                    <strong>Highlights · heatmaps · clips</strong>
-                  </div>
-
-                  <div class="access-pillar"></div>
-                  <div class="access-badge"></div>
-
-                  <div class="bench bench-left"></div>
-                  <div class="bench bench-right"></div>
-                  <div class="mini-bar"></div>
-                  <div class="sofa sofa-left"></div>
-                  <div class="sofa sofa-right"></div>
-                </div>
+          <div class="config-stage glass-card config-stage-webgl">
+            <div class="three-wrap" id="threeWrap">
+              <canvas id="court3d" aria-label="Visor 3D interactivo de una pista Gynoid"></canvas>
+              <div class="three-loader" id="threeLoader">
+                <span></span>
+                <strong>Cargando pista 3D…</strong>
               </div>
-
+              <div class="three-help glass-card">
+                <span>Arrastra para rotar</span>
+                <i></i>
+                <span>Rueda / pellizca para zoom</span>
+              </div>
+              <button class="three-reset" id="threeReset" type="button">Restablecer vista</button>
               <div class="scene-caption glass-card">
                 <span id="sceneBadge">Club · Night</span>
-                <strong id="sceneTitle">Club performance setup</strong>
+                <strong id="sceneTitle">Club Connected</strong>
                 <p id="sceneDescription">Pista premium con techo retráctil, acceso inteligente y Gynoid AI.</p>
               </div>
             </div>
@@ -330,12 +290,12 @@
             <div class="config-box glass-card">
               <span class="config-label">Soluciones activas</span>
               <div class="toggle-grid">
-                <label class="toggle-card"><input type="checkbox" data-feature="roof" checked><span><strong>Techo retráctil</strong><small>Climate</small></span></label>
-                <label class="toggle-card"><input type="checkbox" data-feature="ai" checked><span><strong>Gynoid AI</strong><small>Cámaras y analítica</small></span></label>
-                <label class="toggle-card"><input type="checkbox" data-feature="media"><span><strong>Media LED</strong><small>Publicidad y eventos</small></span></label>
-                <label class="toggle-card"><input type="checkbox" data-feature="access" checked><span><strong>Smart Access</strong><small>App, NFC y QR</small></span></label>
-                <label class="toggle-card"><input type="checkbox" data-feature="energy"><span><strong>Solar Glass</strong><small>Captación energética</small></span></label>
-                <label class="toggle-card"><input type="checkbox" data-feature="lounge"><span><strong>Premium comfort</strong><small>Lounge y minibar</small></span></label>
+                <label class="toggle-card"><input type="checkbox" data-feature="roof" checked><span><strong>Techo retráctil</strong><small>Estructura y paneles móviles</small></span></label>
+                <label class="toggle-card"><input type="checkbox" data-feature="ai" checked><span><strong>Gynoid AI</strong><small>Cámaras y conos de visión</small></span></label>
+                <label class="toggle-card"><input type="checkbox" data-feature="media"><span><strong>Media LED</strong><small>Paredes digitales iluminadas</small></span></label>
+                <label class="toggle-card"><input type="checkbox" data-feature="access" checked><span><strong>Smart Access</strong><small>Kiosco y lector de acceso</small></span></label>
+                <label class="toggle-card"><input type="checkbox" data-feature="energy"><span><strong>Solar Glass</strong><small>Paneles fotovoltaicos visibles</small></span></label>
+                <label class="toggle-card"><input type="checkbox" data-feature="lounge"><span><strong>Premium comfort</strong><small>Bancos, minibar y lounge</small></span></label>
               </div>
             </div>
 
@@ -387,5 +347,6 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script type="module" src="js/court3d.js"></script>
 </body>
 </html>
