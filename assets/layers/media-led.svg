@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#05ddff" stop-opacity=".82"/>
+      <stop offset=".42" stop-color="#3f63ff" stop-opacity=".78"/>
+      <stop offset=".75" stop-color="#8a39ff" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#ff38cc" stop-opacity=".76"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".35"/></pattern>
+  </defs>
+  <g filter="url(#glow)">
+    <polygon points="461,359 799,286 799,724 449,730" fill="url(#g)" opacity=".72"/>
+    <polygon points="807,286 1390,338 1360,681 807,724" fill="url(#g)" opacity=".58"/>
+    <polygon points="461,359 799,286 799,724 449,730" fill="url(#dots)" opacity=".55"/>
+    <polygon points="807,286 1390,338 1360,681 807,724" fill="url(#dots)" opacity=".5"/>
+  </g>
+  <text x="535" y="505" fill="white" font-family="Arial,Helvetica,sans-serif" font-size="64" font-weight="700">GYNOID MEDIA</text>
+  <text x="535" y="560" fill="white" fill-opacity=".82" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="600">GAME · EVENT · SPONSOR</text>
+</svg>

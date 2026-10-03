@@ -1,18 +1,21 @@
-# Gynoid Web V11
+# Gynoid Web V12
 
-Versión refinada para GitHub Pages.
+Versión estática preparada para GitHub Pages.
 
-## Cambios principales
-- Hero más simple y visual.
-- Soluciones más arriba y carrusel más claro, con arrastre/swipe en desktop y móvil.
-- Menos ruido dentro de cada slide y detalles opcionales desplegables.
-- Imagen de Solar Glass corregida para que corresponda con la funcionalidad.
-- Configurador 3D con selector móvil rediseñado: panel inferior compacto, sin desenfoque global y con el visor aún visible.
-- Lenguaje de marca más firme: sin expresiones como “lo importante” o “propuesta de Gynoid”.
-- UI móvil más limpia y coherente.
+## Cambios principales de V12
+- Nueva imagen principal para “Deporte, tecnología y lifestyle en un único sistema”.
+- Navegación de soluciones simplificada con botones Anterior / Siguiente superpuestos sobre la imagen.
+- Eliminado el visor 3D.
+- Nuevo configurador visual 2D por capas, sin dependencias externas:
+  - Media LED
+  - Gynoid AI
+  - Smart Access
+  - Techo retráctil
+  - Solar Glass
+  - Premium Comfort
+- El configurador funciona igual en desktop y móvil, sin modal ni blur de pantalla.
 
 ## Publicación
-Sube el contenido de esta carpeta a tu repositorio y activa GitHub Pages.
-
-## Configuración
-Edita `js/config.js` para cambiar email y WhatsApp.
+1. Sube el contenido del ZIP al repositorio.
+2. Activa GitHub Pages.
+3. Edita `js/config.js` para cambiar email y WhatsApp.

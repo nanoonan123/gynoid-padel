@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024">
+  <defs>
+    <radialGradient id="lens"><stop offset="0" stop-color="#a9f7ff"/><stop offset=".45" stop-color="#248fdb"/><stop offset="1" stop-color="#0c1c2e"/></radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4de9ff" stop-opacity=".3"/><stop offset="1" stop-color="#4de9ff" stop-opacity="0"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="#58ebff" stroke-opacity=".55" stroke-width="2">
+    <path d="M481 317L630 690L785 342Z" fill="url(#beam)" stroke="none"/>
+    <path d="M1058 315L905 690L808 342Z" fill="url(#beam)" stroke="none"/>
+  </g>
+  <g>
+    <g transform="translate(450 290)"><rect width="60" height="40" rx="9" fill="#101923" stroke="#4c5a69"/><circle cx="42" cy="20" r="11" fill="url(#lens)"/><rect x="5" y="-8" width="32" height="10" rx="4" fill="#111820"/></g>
+    <g transform="translate(1025 285)"><rect width="60" height="40" rx="9" fill="#101923" stroke="#4c5a69"/><circle cx="18" cy="20" r="11" fill="url(#lens)"/><rect x="23" y="-8" width="32" height="10" rx="4" fill="#111820"/></g>
+    <g transform="translate(650 720)"><rect width="60" height="40" rx="9" fill="#101923" stroke="#4c5a69"/><circle cx="42" cy="20" r="11" fill="url(#lens)"/></g>
+    <g transform="translate(900 715)"><rect width="60" height="40" rx="9" fill="#101923" stroke="#4c5a69"/><circle cx="18" cy="20" r="11" fill="url(#lens)"/></g>
+  </g>
+</svg>

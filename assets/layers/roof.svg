@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024">
+  <defs>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3f6fb" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#cdd8e4" stop-opacity=".74"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity=".25"/></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <polygon points="445,215 805,151 800,267 451,333" fill="url(#roof)" stroke="#ffffff" stroke-opacity=".5" stroke-width="3"/>
+    <polygon points="812,151 1406,212 1386,316 810,267" fill="url(#roof)" stroke="#ffffff" stroke-opacity=".5" stroke-width="3"/>
+    <g stroke="#8697a9" stroke-opacity=".55" stroke-width="3">
+      <line x1="515" y1="203" x2="518" y2="320"/><line x1="585" y1="190" x2="588" y2="307"/><line x1="655" y1="177" x2="658" y2="294"/><line x1="725" y1="164" x2="728" y2="281"/>
+      <line x1="925" y1="163" x2="913" y2="276"/><line x1="1045" y1="175" x2="1033" y2="286"/><line x1="1165" y1="187" x2="1153" y2="297"/><line x1="1285" y1="199" x2="1273" y2="307"/>
+    </g>
+  </g>
+</svg>

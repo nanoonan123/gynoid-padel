@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024">
+  <defs>
+    <pattern id="cells" width="36" height="28" patternUnits="userSpaceOnUse">
+      <rect width="36" height="28" fill="#103c7b" fill-opacity=".88"/>
+      <path d="M0 0H36V28H0Z" fill="none" stroke="#67aefb" stroke-opacity=".55" stroke-width="1.5"/>
+      <path d="M18 0V28M0 14H36" stroke="#67aefb" stroke-opacity=".32" stroke-width="1"/>
+    </pattern>
+    <filter id="g"><feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#0b4fa3" flood-opacity=".35"/></filter>
+  </defs>
+  <g filter="url(#g)">
+    <polygon points="462,224 793,163 790,255 468,316" fill="url(#cells)" opacity=".95"/>
+    <polygon points="821,163 1386,219 1370,304 821,255" fill="url(#cells)" opacity=".95"/>
+  </g>
+</svg>

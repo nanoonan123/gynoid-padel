@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024">
+  <defs><filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity=".3"/></filter></defs>
+  <g filter="url(#shadow)">
+    <g transform="translate(1115 742)">
+      <rect x="0" y="35" width="230" height="68" rx="18" fill="#222a34"/>
+      <rect x="12" y="16" width="206" height="45" rx="16" fill="#d9dde4"/>
+      <rect x="0" y="0" width="230" height="28" rx="13" fill="#333d49"/>
+    </g>
+    <g transform="translate(1355 690)">
+      <rect x="0" y="0" width="90" height="150" rx="12" fill="#111923" stroke="#4c5967"/>
+      <rect x="12" y="18" width="66" height="96" rx="7" fill="#173b55"/>
+      <rect x="17" y="24" width="12" height="74" rx="5" fill="#57ddff" fill-opacity=".45"/>
+      <rect x="35" y="24" width="12" height="74" rx="5" fill="#ff6a9c" fill-opacity=".45"/>
+      <rect x="53" y="24" width="12" height="74" rx="5" fill="#73f17b" fill-opacity=".45"/>
+    </g>
+    <g transform="translate(1010 786)"><rect width="82" height="82" rx="12" fill="#0f161f"/><circle cx="41" cy="41" r="18" fill="#d9b56d" fill-opacity=".8"/></g>
+  </g>
+</svg>

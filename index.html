@@ -79,13 +79,13 @@
           <p class="hero-sub">Media LED, IA, acceso inteligente y cubiertas retráctiles en una experiencia de pádel diseñada para destacar.</p>
           <div class="hero-actions">
             <a href="#solutions" class="button button-primary">Ver soluciones</a>
-            <a href="#configurator" class="hero-text-link">Explorar configurador 3D →</a>
+            <a href="#configurator" class="hero-text-link">Personalizar pista →</a>
           </div>
         </div>
 
         <div class="hero-visual reveal">
           <article class="hero-card hero-card-main glass-card">
-            <img src="assets/images/v10/resort-court.jpg" alt="Pista de pádel premium Gynoid en entorno luxury resort">
+            <img src="assets/images/v12/hero-system.jpg" alt="Pista Gynoid premium con techo retráctil y media LED">
             <div class="hero-card-copy">
               <span>GYNOID</span>
               <strong>Deporte, tecnología y lifestyle en un único sistema.</strong>
@@ -100,12 +100,12 @@
         <div class="section-head reveal compact-head">
           <span class="eyebrow">SOLUCIONES</span>
           <h2>Tecnología que transforma una pista en una experiencia.</h2>
-          <p>Desliza o arrastra hacia los lados para descubrir cada solución.</p>
+          <p>Explora cada solución con los controles anterior y siguiente.</p>
         </div>
 
         <div class="carousel-shell reveal">
           <div class="slider-frame" id="solutionSlider">
-            <div class="slider-hint" aria-hidden="true"><span>Arrastra</span><i>→</i></div>
+            
             <div class="slider-track" id="sliderTrack">
               <article class="slide-card is-active" data-index="0">
                 <div class="slide-image"><img src="assets/images/v10/media-led.jpg" alt="Pista Gynoid con paredes LED para branding"></div>
@@ -181,7 +181,7 @@
 
           <div class="carousel-controls">
             <div class="carousel-progress"><strong id="slideCount">01 / 07</strong><div class="slider-dots" id="sliderDots"></div></div>
-            <div class="carousel-actions"><span>Desliza para explorar</span><button class="slider-arrow" id="sliderPrev" aria-label="Anterior">←</button><button class="slider-arrow" id="sliderNext" aria-label="Siguiente">→</button></div>
+            <div class="carousel-actions"><span>Anterior / siguiente</span></div>
           </div>
         </div>
       </div>
@@ -216,85 +216,86 @@
       <div class="shell">
         <div class="section-head reveal compact-head">
           <span class="eyebrow">CONFIGURA TU PISTA</span>
-          <h2>Explora la pista ideal en 3D y activa cada solución.</h2>
-          <p>Rota, haz zoom y prueba combinaciones reales: contexto, ambiente y capas tecnológicas.</p>
+          <h2>Activa soluciones y visualiza cómo cambia la pista.</h2>
+          <p>Un configurador visual por capas: selecciona cada funcionalidad y mira el efecto directamente sobre la imagen.</p>
         </div>
 
-        <div class="config-grid reveal">
-          <div class="config-stage glass-card config-stage-webgl">
-            <div class="three-wrap" id="threeWrap">
-              <canvas id="court3d" aria-label="Visor 3D interactivo de una pista Gynoid"></canvas>
-              <div class="three-loader" id="threeLoader">
-                <span></span>
-                <strong>Cargando pista 3D…</strong>
+        <div class="visual-configurator reveal">
+          <div class="visual-stage glass-card" id="visualStage">
+            <img class="visual-base" src="assets/images/gallery-resort.webp" alt="Pista de pádel Gynoid base para configurar">
+
+            <img class="visual-layer" data-layer="roof" src="assets/layers/roof.svg" alt="" aria-hidden="true">
+            <img class="visual-layer" data-layer="media" src="assets/layers/media-led.svg" alt="" aria-hidden="true">
+            <img class="visual-layer" data-layer="ai" src="assets/layers/ai.svg" alt="" aria-hidden="true">
+            <img class="visual-layer" data-layer="access" src="assets/layers/access.svg" alt="" aria-hidden="true">
+            <img class="visual-layer" data-layer="energy" src="assets/layers/solar.svg" alt="" aria-hidden="true">
+            <img class="visual-layer" data-layer="lounge" src="assets/layers/comfort.svg" alt="" aria-hidden="true">
+
+            <div class="layer-detail-card glass-card" id="layerDetailCard">
+              <img id="layerDetailImage" src="assets/images/v10/media-led.jpg" alt="Detalle de Media LED">
+              <div>
+                <span id="layerDetailEyebrow">MEDIA LED</span>
+                <strong id="layerDetailTitle">Vidrios LED activos</strong>
+                <p id="layerDetailText">Publicidad, sponsors, eventos y modo juego integrados en las paredes de la pista.</p>
               </div>
-              <div class="three-help glass-card">
-                <span>Arrastra para rotar</span>
-                <i></i>
-                <span>Rueda / pellizca para zoom</span>
-              </div>
-              <button class="three-reset" id="threeReset" type="button">Restablecer vista</button>
-              <button class="mobile-config-toggle" id="mobileConfigToggle" type="button">Opciones</button>
-              <div class="scene-caption glass-card">
-                <span id="sceneBadge">Club · Night</span>
-                <strong id="sceneTitle">Club Connected</strong>
-                <p id="sceneDescription">Pista premium con media LED, acceso inteligente y Gynoid AI.</p>
-              </div>
+            </div>
+
+            <div class="visual-status glass-card">
+              <span id="visualStatusCount">5 soluciones activas</span>
+              <strong id="visualStatusTitle">Gynoid Signature</strong>
             </div>
           </div>
 
-          <div class="config-panel" id="configPanel">
-            <div class="config-sheet-head">
-              <strong>Personaliza la pista</strong>
-              <button class="config-sheet-close" id="configSheetClose" type="button">Listo</button>
+          <div class="layer-controls glass-card">
+            <div class="layer-controls-head">
+              <div>
+                <span class="config-label">CAPAS ACTIVAS</span>
+                <strong>Construye tu configuración</strong>
+              </div>
+              <button class="layer-reset" id="layerReset" type="button">Restablecer</button>
             </div>
 
-            <div class="config-scroll-area">
-              <div class="config-box glass-card environment-box">
-                <div class="config-row">
-                  <span class="config-label">Entorno</span>
-                  <div class="segment-row" id="contextSelector">
-                    <button class="segment is-active" data-context="club">Club</button>
-                    <button class="segment" data-context="resort">Resort</button>
-                    <button class="segment" data-context="urban">Urban</button>
-                  </div>
-                </div>
-                <div class="config-row">
-                  <span class="config-label">Luz</span>
-                  <div class="segment-row" id="themeSelector">
-                    <button class="segment is-active" data-theme="night">Night</button>
-                    <button class="segment" data-theme="day">Day</button>
-                  </div>
-                </div>
-              </div>
+            <div class="layer-switches" id="layerSwitches">
+              <label class="layer-switch is-on" data-layer-key="media">
+                <input type="checkbox" data-feature="media" checked>
+                <span class="layer-switch-icon">LED</span>
+                <span><strong>Media LED</strong><small>Publicidad, eventos y modo juego</small></span>
+              </label>
+              <label class="layer-switch is-on" data-layer-key="ai">
+                <input type="checkbox" data-feature="ai" checked>
+                <span class="layer-switch-icon">AI</span>
+                <span><strong>Gynoid AI</strong><small>Cámaras, análisis y streaming</small></span>
+              </label>
+              <label class="layer-switch is-on" data-layer-key="access">
+                <input type="checkbox" data-feature="access" checked>
+                <span class="layer-switch-icon">NFC</span>
+                <span><strong>Smart Access</strong><small>App, NFC, QR y puerta automática</small></span>
+              </label>
+              <label class="layer-switch is-on" data-layer-key="roof">
+                <input type="checkbox" data-feature="roof" checked>
+                <span class="layer-switch-icon">RF</span>
+                <span><strong>Techo retráctil</strong><small>Más confort y disponibilidad</small></span>
+              </label>
+              <label class="layer-switch" data-layer-key="energy">
+                <input type="checkbox" data-feature="energy">
+                <span class="layer-switch-icon">SOL</span>
+                <span><strong>Solar Glass</strong><small>Generación energética integrada</small></span>
+              </label>
+              <label class="layer-switch is-on" data-layer-key="lounge">
+                <input type="checkbox" data-feature="lounge" checked>
+                <span class="layer-switch-icon">VIP</span>
+                <span><strong>Premium Comfort</strong><small>Lounge, minibar y mini fridge</small></span>
+              </label>
+            </div>
 
-              <div class="config-box glass-card">
-                <span class="config-label">Soluciones activas</span>
-                <div class="toggle-grid">
-                  <label class="toggle-card"><input type="checkbox" data-feature="roof" checked><span><strong>Techo retráctil</strong><small>Estructura y paneles móviles</small></span></label>
-                  <label class="toggle-card"><input type="checkbox" data-feature="ai" checked><span><strong>Gynoid AI</strong><small>4 cámaras, analítica y streaming</small></span></label>
-                  <label class="toggle-card"><input type="checkbox" data-feature="media" checked><span><strong>Media LED</strong><small>Vidrios LED en paredes completas</small></span></label>
-                  <label class="toggle-card"><input type="checkbox" data-feature="access" checked><span><strong>Smart Access</strong><small>Puerta automática y lector de acceso</small></span></label>
-                  <label class="toggle-card"><input type="checkbox" data-feature="energy"><span><strong>Solar Glass</strong><small>Paneles solares visibles</small></span></label>
-                  <label class="toggle-card"><input type="checkbox" data-feature="lounge" checked><span><strong>Premium comfort</strong><small>Lounge, minibar y mini fridge</small></span></label>
-                </div>
-              </div>
-
-              <div class="config-summary glass-card">
-                <span class="config-label">Configuración</span>
-                <h3 id="configTitle">Club Connected</h3>
-                <div class="config-tags" id="configTags"></div>
-                <p id="configText">Una pista premium pensada para clubes que quieren tecnología visible, experiencia fluida y una imagen superior.</p>
-                <div class="summary-actions">
-                  <a href="#contact" class="button button-primary">Hablar de un proyecto</a>
-                  <a href="#solutions" class="button button-glass">Ver soluciones</a>
-                </div>
-              </div>
+            <div class="layer-summary">
+              <div class="config-tags" id="configTags"></div>
+              <p id="configText">Una configuración premium con media LED, IA, acceso inteligente, techo retráctil y comfort.</p>
+              <a href="#contact" class="button button-primary">Hablar de un proyecto</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="config-overlay" id="configOverlay" hidden></div>
     </section>
 
     <section class="section contact" id="contact">
@@ -332,6 +333,5 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
-  <script type="module" src="js/court3d.js"></script>
 </body>
 </html>
