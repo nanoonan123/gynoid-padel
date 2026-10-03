@@ -3,425 +3,306 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#05090f" />
+  <meta name="theme-color" content="#05080d" />
   <meta name="color-scheme" content="dark" />
-  <meta name="description" content="Gynoid — intelligent padel courts con diseño premium, IA, acceso inteligente, media LED, techo retráctil y energía integrada." />
-  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Gynoid crea pistas de pádel premium con IA, acceso inteligente, media LED, techo retráctil y energía integrada." />
   <title>Gynoid — Intelligent Padel Courts</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="preload" href="assets/images/v4/hero-court.png" as="image" type="image/png" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="assets/images/hero-court.png" as="image" type="image/png" fetchpriority="high" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
-  <div class="pointer-aura" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
-  <header class="site-header" id="top">
-    <div class="header-shell">
-      <a class="brand" href="#top" aria-label="Gynoid, inicio">
-        <img src="assets/logo/gynoid-wordmark.jpg" alt="Gynoid AI Court Ultimate" />
+  <header class="topbar" id="top">
+    <div class="topbar-inner">
+      <a href="#top" class="brand" aria-label="Gynoid, inicio">
+        <img src="assets/logo/gynoid-logo-transparent.png" alt="Gynoid" />
       </a>
 
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menú">
-        <span></span><span></span>
-      </button>
-
-      <nav class="site-nav" id="siteNav" aria-label="Navegación principal">
-        <a href="#vision">Visión</a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
         <a href="#solutions">Soluciones</a>
-        <a href="#journey">Experiencia</a>
-        <a href="#configurator">Configurator 3D</a>
-        <a href="#gallery">Galería</a>
-        <a class="nav-cta" href="#contact">Solicitar proyecto</a>
+        <a href="#configurator">Configura tu pista</a>
+        <a href="#contact">Contacto</a>
       </nav>
+
+      <div class="header-actions">
+        <a class="header-contact" href="#contact">Hablar con Gynoid</a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sideMenu" aria-label="Abrir menú">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
+  <div class="menu-backdrop" id="menuBackdrop" hidden></div>
+  <aside class="side-menu" id="sideMenu" aria-hidden="true" aria-label="Menú lateral">
+    <div class="side-menu-head">
+      <img src="assets/logo/gynoid-logo-transparent.png" alt="Gynoid" />
+      <button class="menu-close" id="menuClose" aria-label="Cerrar menú">×</button>
+    </div>
+
+    <nav class="side-menu-nav">
+      <a href="#top" class="side-link">Inicio</a>
+      <details class="menu-group" open>
+        <summary>Soluciones <span>+</span></summary>
+        <div class="menu-subnav">
+          <a href="#solutions" data-slide-target="0">Pista premium</a>
+          <a href="#solutions" data-slide-target="1">Gynoid AI</a>
+          <a href="#solutions" data-slide-target="2">Smart Access</a>
+          <a href="#solutions" data-slide-target="3">Media LED</a>
+          <a href="#solutions" data-slide-target="4">Climate</a>
+          <a href="#solutions" data-slide-target="5">Energy</a>
+        </div>
+      </details>
+      <a href="#configurator" class="side-link">Configura tu pista</a>
+      <a href="#contact" class="side-link">Contacto</a>
+    </nav>
+
+    <div class="side-menu-cta">
+      <p>¿Tienes un proyecto en mente?</p>
+      <a href="#contact" class="button button-primary">Contactar</a>
+    </div>
+  </aside>
+
   <main id="main">
-    <section class="hero hero-v6" aria-labelledby="heroTitle">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="hero-lines" aria-hidden="true"></div>
-      <div class="hero-orb orb-left" aria-hidden="true"></div>
-      <div class="hero-orb orb-right" aria-hidden="true"></div>
-
-      <div class="shell hero-grid hero-grid-v6">
-        <div class="hero-copy">
-          <img class="hero-wordmark reveal" src="assets/logo/gynoid-wordmark.jpg" alt="Gynoid AI Court Ultimate" />
-          <p class="eyebrow reveal">INTELLIGENT PADEL · APPLE-LIKE PREMIUM EXPERIENCE</p>
-          <h1 id="heroTitle" class="reveal">Diseñamos la pista.<br><span>Diseñamos todo lo que ocurre alrededor.</span></h1>
-          <p class="hero-lead reveal">Gynoid convierte una pista de pádel en un sistema completo: arquitectura premium, acceso inteligente, IA, media LED, automatización climática y energía integrada.</p>
-          <div class="hero-actions reveal">
-            <a class="button button-primary" href="#solutions">Explorar soluciones</a>
-            <a class="button button-secondary" href="#configurator">Configurar mi pista</a>
-          </div>
-
-          <div class="hero-proof reveal" aria-label="Áreas principales">
-            <span>PREMIUM COURT</span><i></i>
-            <span>AI & CAMERAS</span><i></i>
-            <span>SMART ACCESS</span><i></i>
-            <span>LED MEDIA</span><i></i>
-            <span>CLIMATE</span><i></i>
-            <span>ENERGY</span>
-          </div>
-        </div>
-
-        <aside class="hero-device glass reveal" aria-label="Resumen del sistema Gynoid">
-          <div class="hero-device-screen">
-            <div class="device-statusbar">
-              <span>GYNOID OS</span>
-              <span class="live-dot"><b></b> LIVE</span>
-            </div>
-            <div class="device-cards">
-              <article class="device-card device-card-large">
-                <span>01</span>
-                <strong>06 layers / 01 system</strong>
-                <p>Una plataforma visual y tecnológica, diseñada para clubes, resorts, hospitality y real estate.</p>
-              </article>
-              <article class="device-card">
-                <span>AI</span>
-                <strong>Capture</strong>
-                <p>Highlights, análisis y contenido.</p>
-              </article>
-              <article class="device-card">
-                <span>ACCESS</span>
-                <strong>Open</strong>
-                <p>App, NFC, QR y permisos.</p>
-              </article>
-              <article class="device-card">
-                <span>MEDIA</span>
-                <strong>Activate</strong>
-                <p>LED glass, branding y eventos.</p>
-              </article>
-            </div>
-          </div>
-        </aside>
-      </div>
-
-      <div class="hero-bottom-strip reveal">
-        <div class="shell strip-grid">
-          <article><strong>Se entiende rápido</strong><p>Cada solución se presenta con imagen, beneficio y detalle.</p></article>
-          <article><strong>Se siente premium</strong><p>Lenguaje visual, glass, movimiento y composición más aspiracional.</p></article>
-          <article><strong>Se navega mejor</strong><p>Mejor estructura para desktop y una experiencia mucho más sólida en móvil.</p></article>
+    <section class="hero">
+      <img class="hero-image" src="assets/images/hero-court.png" alt="Pista de pádel Gynoid premium al atardecer" />
+      <div class="hero-shade"></div>
+      <div class="hero-content shell">
+        <p class="eyebrow reveal">INTELLIGENT PADEL COURTS</p>
+        <h1 class="reveal">La nueva generación<br>de pistas de pádel.</h1>
+        <p class="hero-subtitle reveal">Diseño premium, tecnología integrada y una experiencia pensada para jugar, operar y diferenciarse.</p>
+        <div class="hero-actions reveal">
+          <a href="#solutions" class="button button-primary">Ver soluciones</a>
+          <a href="#configurator" class="button button-glass">Configurar una pista</a>
         </div>
       </div>
+      <a href="#solutions" class="scroll-cue" aria-label="Bajar a soluciones"><span></span></a>
     </section>
 
-    <section class="section statement" id="vision">
-      <div class="shell statement-grid slim-statement">
-        <div class="statement-index reveal">01 / VISION</div>
-        <div class="statement-copy reveal">
-          <p class="eyebrow">MORE THAN PADEL</p>
-          <h2>Fácil de mirar.<br>Fácil de entender.<br>Difícil de igualar.</h2>
-        </div>
-        <div class="statement-aside reveal">
-          <p>Gynoid no es solo una pista. Es una <strong>experiencia tecnológica y visual</strong> que ordena el juego, la operación, la imagen del espacio y su potencial de negocio.</p>
-        </div>
-      </div>
-
-      <div class="shell value-strip reveal compact-values">
-        <article>
-          <span class="value-icon">01</span>
-          <div><strong>Sport</strong><p>Pista, iluminación y confort diseñados como una experiencia premium.</p></div>
-        </article>
-        <article>
-          <span class="value-icon">02</span>
-          <div><strong>Technology</strong><p>App, accesos, cámaras, sensores y control digital integrados.</p></div>
-        </article>
-        <article>
-          <span class="value-icon">03</span>
-          <div><strong>Business</strong><p>Eventos, hospitality, publicidad y contenido para crear más valor.</p></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section solutions-section" id="solutions">
+    <section class="section solutions" id="solutions">
       <div class="shell">
-        <div class="section-heading reveal narrow-heading">
-          <p class="eyebrow">02 / ALL SOLUTIONS</p>
-          <h2>Seis soluciones. Una experiencia coherente.</h2>
-          <p>Haz clic en cada capa para entender de forma rápida qué hace, cómo se ve y por qué aporta valor.</p>
+        <div class="section-intro reveal">
+          <p class="eyebrow">TODO LO QUE OFRECEMOS</p>
+          <h2>Una pista. Seis soluciones.</h2>
+          <p>Desliza para descubrir cada capa del sistema Gynoid.</p>
         </div>
 
-        <div class="solutions-layout reveal">
-          <div class="solution-nav" role="tablist" aria-label="Soluciones Gynoid">
-            <button class="solution-pill is-active" data-module="court" role="tab" aria-selected="true"><span>01</span><strong>Court</strong><small>Pista premium</small></button>
-            <button class="solution-pill" data-module="ai" role="tab" aria-selected="false"><span>02</span><strong>Gynoid AI</strong><small>Cámaras y análisis</small></button>
-            <button class="solution-pill" data-module="access" role="tab" aria-selected="false"><span>03</span><strong>Access</strong><small>App y accesos</small></button>
-            <button class="solution-pill" data-module="media" role="tab" aria-selected="false"><span>04</span><strong>Media</strong><small>LED y contenido</small></button>
-            <button class="solution-pill" data-module="climate" role="tab" aria-selected="false"><span>05</span><strong>Climate</strong><small>Techo y sensores</small></button>
-            <button class="solution-pill" data-module="energy" role="tab" aria-selected="false"><span>06</span><strong>Energy</strong><small>Vidrio solar</small></button>
-          </div>
-
-          <div class="solution-stage glass">
-            <button class="solution-visual image-button" id="moduleVisualButton" data-lightbox="assets/images/v4/hero-court.png">
-              <img id="moduleImage" src="assets/images/v4/hero-court.png" alt="Pista Gynoid premium" />
-              <div class="solution-visual-tag">
-                <span id="moduleBadge">CORE / COURT</span>
-              </div>
-            </button>
-
-            <div class="solution-copy">
-              <p class="eyebrow" id="moduleEyebrow">THE FOUNDATION</p>
-              <h3 id="moduleTitle">La base premium sobre la que se apoya todo.</h3>
-              <p class="solution-lead" id="moduleText">Una pista pensada como producto: estructura, cristal, suelo e iluminación resueltos con una lectura visual premium.</p>
-
-              <div class="solution-meta">
-                <div>
-                  <span>Incluye</span>
-                  <div class="chip-row" id="moduleChips"></div>
+        <div class="slider-shell reveal" id="solutionSlider">
+          <div class="slider-viewport">
+            <div class="slider-track" id="sliderTrack">
+              <article class="solution-slide" data-index="0">
+                <div class="slide-media"><img src="assets/images/hero-court.png" alt="Pista Gynoid premium" loading="lazy" /></div>
+                <div class="slide-copy">
+                  <span class="slide-number">01</span>
+                  <p class="eyebrow">GYNOID COURT</p>
+                  <h3>Una pista premium desde la base.</h3>
+                  <p>Estructura, cristal, suelo e iluminación diseñados como un único producto.</p>
+                  <div class="slide-tags"><span>Arquitectura</span><span>Suelo técnico</span><span>Iluminación</span></div>
+                  <details><summary>Ver detalles</summary><p>La pista sirve de base para integrar el resto del ecosistema Gynoid sin perder coherencia visual ni experiencia de juego.</p></details>
                 </div>
-                <div>
-                  <span>Ideal para</span>
-                  <div class="chip-row is-soft" id="moduleUseCases"></div>
-                </div>
-              </div>
+              </article>
 
-              <div class="feature-mini-grid" id="moduleFeatures"></div>
+              <article class="solution-slide" data-index="1">
+                <div class="slide-media"><img src="assets/images/ai-cameras.png" alt="Sistema Gynoid AI con cámaras y analítica" loading="lazy" /></div>
+                <div class="slide-copy">
+                  <span class="slide-number">02</span>
+                  <p class="eyebrow">GYNOID AI</p>
+                  <h3>Graba. Analiza. Comparte.</h3>
+                  <p>Cámaras y software para convertir cada partido en datos, highlights y contenido.</p>
+                  <div class="slide-tags"><span>Multicámara</span><span>Highlights</span><span>Analítica</span></div>
+                  <details><summary>Ver detalles</summary><p>Una capa digital útil para jugadores, entrenadores, clubes, torneos y generación de contenido.</p></details>
+                </div>
+              </article>
+
+              <article class="solution-slide" data-index="2">
+                <div class="slide-media"><img src="assets/images/smart-access.png" alt="Acceso inteligente Gynoid con smartphone y NFC" loading="lazy" /></div>
+                <div class="slide-copy">
+                  <span class="slide-number">03</span>
+                  <p class="eyebrow">SMART ACCESS</p>
+                  <h3>La reserva se convierte en la llave.</h3>
+                  <p>App, NFC, Bluetooth y QR para acceder sin fricción y controlar usuarios y horarios.</p>
+                  <div class="slide-tags"><span>App</span><span>NFC</span><span>QR temporal</span></div>
+                  <details><summary>Ver detalles</summary><p>Jugadores, invitados, entrenadores y staff pueden tener permisos distintos y accesos temporales.</p></details>
+                </div>
+              </article>
+
+              <article class="solution-slide" data-index="3">
+                <div class="slide-media"><img src="assets/images/led-media.png" alt="Pista Gynoid con media LED integrada" loading="lazy" /></div>
+                <div class="slide-copy">
+                  <span class="slide-number">04</span>
+                  <p class="eyebrow">GYNOID MEDIA</p>
+                  <h3>La pista también puede ser una pantalla.</h3>
+                  <p>Vidrios LED y contenido digital para publicidad, eventos y activaciones.</p>
+                  <div class="slide-tags"><span>LED glass</span><span>Eventos</span><span>Branding</span></div>
+                  <details><summary>Ver detalles</summary><p>La pista gana una segunda vida como soporte visual para sponsors, marcas, hospitality y experiencias especiales.</p></details>
+                </div>
+              </article>
+
+              <article class="solution-slide" data-index="4">
+                <div class="slide-media"><img src="assets/images/retractable-roof.png" alt="Pista Gynoid con techo retráctil" loading="lazy" /></div>
+                <div class="slide-copy">
+                  <span class="slide-number">05</span>
+                  <p class="eyebrow">GYNOID CLIMATE</p>
+                  <h3>Outdoor cuando quieres. Indoor cuando lo necesitas.</h3>
+                  <p>Techo retráctil, sensores y automatización para ganar flexibilidad operativa.</p>
+                  <div class="slide-tags"><span>Techo</span><span>Sensores</span><span>Automatización</span></div>
+                  <details><summary>Ver detalles</summary><p>Permite adaptar la cancha a las condiciones del entorno y ampliar su disponibilidad a lo largo del año.</p></details>
+                </div>
+              </article>
+
+              <article class="solution-slide" data-index="5">
+                <div class="slide-media"><img src="assets/images/solar-glass.png" alt="Pista Gynoid con vidrio solar integrado" loading="lazy" /></div>
+                <div class="slide-copy">
+                  <span class="slide-number">06</span>
+                  <p class="eyebrow">GYNOID ENERGY</p>
+                  <h3>La arquitectura también puede generar energía.</h3>
+                  <p>Vidrio solar y monitorización energética integrados en el concepto de pista.</p>
+                  <div class="slide-tags"><span>Solar glass</span><span>Eficiencia</span><span>Monitorización</span></div>
+                  <details><summary>Ver detalles</summary><p>Una capa especialmente atractiva para proyectos premium con una narrativa tecnológica y sostenible.</p></details>
+                </div>
+              </article>
             </div>
           </div>
-        </div>
 
-        <div class="solution-cards reveal">
-          <article class="info-card" data-open-module="court"><span>01</span><h3>Pista premium</h3><p>La arquitectura y el look & feel elevan la percepción de todo el proyecto.</p></article>
-          <article class="info-card" data-open-module="ai"><span>02</span><h3>Cámaras & IA</h3><p>Grabación, análisis, highlights y experiencia digital para el jugador.</p></article>
-          <article class="info-card" data-open-module="access"><span>03</span><h3>Acceso inteligente</h3><p>App, NFC, Bluetooth y permisos temporales de forma sencilla.</p></article>
-          <article class="info-card" data-open-module="media"><span>04</span><h3>Media LED</h3><p>Contenido, branding y activaciones visuales integradas en la pista.</p></article>
-          <article class="info-card" data-open-module="climate"><span>05</span><h3>Clima & techo</h3><p>Más control, más flexibilidad y más días útiles de operación.</p></article>
-          <article class="info-card" data-open-module="energy"><span>06</span><h3>Energía</h3><p>Vidrios solares y una capa de sostenibilidad con valor de marca.</p></article>
+          <div class="slider-controls">
+            <button class="slider-arrow" id="sliderPrev" aria-label="Anterior">←</button>
+            <div class="slider-dots" id="sliderDots" aria-label="Seleccionar solución"></div>
+            <button class="slider-arrow" id="sliderNext" aria-label="Siguiente">→</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section journey-section" id="journey">
-      <div class="shell">
-        <div class="section-heading reveal narrow-heading">
-          <p class="eyebrow">03 / EXPERIENCE JOURNEY</p>
-          <h2>Así se vive Gynoid, paso a paso.</h2>
-          <p>La experiencia también se puede explicar como un recorrido: reserva, acceso, juego, análisis y activación.</p>
-        </div>
-
-        <div class="journey-shell glass reveal">
-          <div class="journey-steps" role="tablist" aria-label="Recorrido Gynoid">
-            <button class="journey-step is-active" data-journey="reserve" role="tab" aria-selected="true"><span>01</span><strong>Reserva</strong></button>
-            <button class="journey-step" data-journey="access" role="tab" aria-selected="false"><span>02</span><strong>Accede</strong></button>
-            <button class="journey-step" data-journey="play" role="tab" aria-selected="false"><span>03</span><strong>Juega</strong></button>
-            <button class="journey-step" data-journey="analyze" role="tab" aria-selected="false"><span>04</span><strong>Analiza</strong></button>
-            <button class="journey-step" data-journey="activate" role="tab" aria-selected="false"><span>05</span><strong>Activa</strong></button>
-          </div>
-
-          <div class="journey-stage">
-            <button class="journey-image image-button" id="journeyVisualButton" data-lightbox="assets/images/v4/smart-access.png">
-              <img id="journeyImage" src="assets/images/v4/smart-access.png" alt="Reserva y acceso Gynoid" />
-            </button>
-            <div class="journey-copy">
-              <p class="eyebrow" id="journeyEyebrow">BEFORE THE MATCH</p>
-              <h3 id="journeyTitle">La reserva se prepara para convertirse en acceso.</h3>
-              <p id="journeyText">La capa digital ordena la experiencia desde el primer momento: usuario, franja, permisos y activación de la pista.</p>
-              <ul class="journey-points" id="journeyPoints"></ul>
-            </div>
-          </div>
-        </div>
+    <section class="section value-section">
+      <div class="shell value-grid reveal">
+        <article><strong>01</strong><h3>Premium</h3><p>Diseño y experiencia a la altura del proyecto.</p></article>
+        <article><strong>02</strong><h3>Connected</h3><p>Hardware y software trabajando como un sistema.</p></article>
+        <article><strong>03</strong><h3>Business ready</h3><p>Más posibilidades de uso, contenido y monetización.</p></article>
       </div>
     </section>
 
     <section class="section configurator-section" id="configurator">
       <div class="shell">
-        <div class="section-heading reveal narrow-heading">
-          <p class="eyebrow">04 / CONFIGURE YOUR IDEAL COURT</p>
-          <h2>Configura tu pista ideal en una vista 3D conceptual.</h2>
-          <p>Activa o desactiva capas del sistema y obtén una lectura rápida del tipo de proyecto que estás imaginando.</p>
+        <div class="section-intro reveal">
+          <p class="eyebrow">CONFIGURA TU PISTA</p>
+          <h2>Construye tu versión de Gynoid.</h2>
+          <p>Activa soluciones y observa cómo cambia la pista. Puedes arrastrar la vista para rotarla.</p>
         </div>
 
-        <div class="configurator-layout reveal">
-          <div class="configurator-view glass">
-            <div class="configurator-stage" id="configuratorStage" data-theme="night" data-roof="on" data-ai="on" data-media="off" data-access="on" data-energy="off">
-              <div class="scene-sky"></div>
-              <div class="scene-glow"></div>
-              <div class="court-3d">
-                <div class="court-floor"></div>
-                <div class="court-line court-line-center"></div>
-                <div class="court-line court-line-service left"></div>
-                <div class="court-line court-line-service right"></div>
-                <div class="court-net-3d"></div>
-                <div class="court-wall back"></div>
-                <div class="court-wall left"></div>
-                <div class="court-wall right"></div>
-                <div class="roof-panel"></div>
-                <div class="led-overlay"></div>
-                <div class="solar-overlay"></div>
-                <div class="camera camera-a"></div>
-                <div class="camera camera-b"></div>
-                <div class="access-node"></div>
+        <div class="config-layout reveal">
+          <div class="config-preview glass">
+            <div class="scene" id="scene" data-theme="night" data-context="club">
+              <div class="scene-bg"></div>
+              <div class="scene-floor"></div>
+              <div class="scene-skyline"></div>
+              <div class="scene-palms"><i></i><i></i><i></i></div>
+              <div class="scene-lounge"><i></i><i></i><i></i></div>
+
+              <div class="court-wrap" id="courtWrap">
+                <div class="court3d">
+                  <div class="floor3d">
+                    <i class="line mid"></i><i class="line cross"></i><i class="line service l"></i><i class="line service r"></i>
+                  </div>
+                  <div class="wall3d back"><span></span></div>
+                  <div class="wall3d left"><span></span></div>
+                  <div class="wall3d right"><span></span></div>
+                  <div class="net3d"></div>
+                  <div class="roof3d"><div class="roof-grid"></div></div>
+                  <div class="media3d back-media"></div>
+                  <div class="media3d left-media"></div>
+                  <div class="media3d right-media"></div>
+                  <div class="solar3d"></div>
+                  <div class="camera3d cam1"></div><div class="camera3d cam2"></div><div class="camera3d cam3"></div>
+                  <div class="beam beam1"></div><div class="beam beam2"></div>
+                  <div class="access3d"><span></span></div>
+                  <div class="bench3d bench1"></div><div class="bench3d bench2"></div>
+                  <div class="fridge3d"></div>
+                </div>
               </div>
-              <div class="config-floating-card glass">
-                <span id="configProjectType">Club premium</span>
-                <strong id="configHeadline">Pista premium + access + AI</strong>
-                <p id="configDescription">Una configuración equilibrada para clubes y proyectos que buscan elevar experiencia y operación.</p>
+
+              <div class="scene-labels" aria-hidden="true">
+                <span class="label-roof">Retractable Roof</span>
+                <span class="label-ai">AI Cameras</span>
+                <span class="label-media">LED Media</span>
+                <span class="label-access">Smart Access</span>
+                <span class="label-energy">Solar Glass</span>
+                <span class="label-lounge">Premium Comfort</span>
               </div>
+
+              <div class="scene-hint">Arrastra para rotar · scroll para ver detalles</div>
             </div>
           </div>
 
-          <div class="configurator-controls glass">
-            <div class="controls-group">
-              <p class="controls-title">Contexto</p>
+          <div class="config-panel glass">
+            <div class="config-block">
+              <span class="config-label">Contexto</span>
               <div class="segmented" id="contextSelector">
                 <button class="segment is-active" data-context="club">Club</button>
                 <button class="segment" data-context="resort">Resort</button>
-                <button class="segment" data-context="city">Urban</button>
+                <button class="segment" data-context="urban">Urban</button>
               </div>
             </div>
 
-            <div class="controls-group">
-              <p class="controls-title">Ambiente</p>
+            <div class="config-block">
+              <span class="config-label">Ambiente</span>
               <div class="segmented" id="themeSelector">
                 <button class="segment is-active" data-theme="night">Night</button>
                 <button class="segment" data-theme="day">Day</button>
               </div>
             </div>
 
-            <div class="controls-group toggles-grid">
-              <label class="toggle-card"><input type="checkbox" data-toggle="roof" checked /><span><strong>Techo retráctil</strong><small>Climate layer</small></span></label>
-              <label class="toggle-card"><input type="checkbox" data-toggle="ai" checked /><span><strong>Gynoid AI</strong><small>Cámaras y analítica</small></span></label>
-              <label class="toggle-card"><input type="checkbox" data-toggle="media" /><span><strong>Media LED</strong><small>Publicidad y contenido</small></span></label>
-              <label class="toggle-card"><input type="checkbox" data-toggle="access" checked /><span><strong>Smart Access</strong><small>App, NFC y QR</small></span></label>
-              <label class="toggle-card"><input type="checkbox" data-toggle="energy" /><span><strong>Solar Glass</strong><small>Energy layer</small></span></label>
+            <div class="config-block toggle-list">
+              <label><input type="checkbox" data-feature="roof" checked><span><strong>Techo retráctil</strong><small>Climate</small></span></label>
+              <label><input type="checkbox" data-feature="ai" checked><span><strong>Gynoid AI</strong><small>Cámaras + análisis</small></span></label>
+              <label><input type="checkbox" data-feature="media"><span><strong>Media LED</strong><small>Publicidad + eventos</small></span></label>
+              <label><input type="checkbox" data-feature="access" checked><span><strong>Smart Access</strong><small>App + NFC + QR</small></span></label>
+              <label><input type="checkbox" data-feature="energy"><span><strong>Solar Glass</strong><small>Energía integrada</small></span></label>
+              <label><input type="checkbox" data-feature="lounge"><span><strong>Premium Comfort</strong><small>Bancos + minibar + lounge</small></span></label>
             </div>
 
-            <div class="config-summary">
-              <div>
-                <span>Configuración</span>
-                <div class="chip-row" id="configSummaryChips"></div>
-              </div>
-              <div>
-                <span>Perfil de proyecto</span>
-                <p id="configSummaryText">Ideal para un club premium que quiere una experiencia conectada y lista para crecer.</p>
-              </div>
+            <div class="config-result">
+              <span class="config-label">Tu configuración</span>
+              <h3 id="configTitle">Club Connected</h3>
+              <div class="config-chips" id="configChips"></div>
+              <p id="configText">Una pista premium conectada con acceso inteligente, cámaras y techo retráctil.</p>
+              <a href="#contact" class="button button-primary">Pedir propuesta</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section premium-layer">
-      <div class="shell premium-grid">
-        <article class="premium-card premium-card-image reveal" data-parallax="0.03">
-          <button class="image-button" data-lightbox="assets/images/v4/premium-equipment.png">
-            <img src="assets/images/v4/premium-equipment.png" alt="Equipamiento premium Gynoid" loading="lazy" decoding="async" />
-          </button>
-        </article>
-
-        <article class="premium-card premium-card-copy glass reveal">
-          <p class="eyebrow">05 / PREMIUM LAYER</p>
-          <h2>El lujo también está en todo lo que rodea el partido.</h2>
-          <p>Confort, hospitality, mobiliario, ambientación, accesorios y una dirección estética coherente: la experiencia premium se construye dentro y fuera de la pista.</p>
-          <div class="mini-points mini-points-large">
-            <span>Hospitality</span>
-            <span>Comfort</span>
-            <span>Design language</span>
-            <span>Brand experience</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section use-cases" id="use-cases">
-      <div class="shell">
-        <div class="section-heading reveal narrow-heading">
-          <p class="eyebrow">06 / DESIGNED FOR</p>
-          <h2>Una plataforma flexible para distintos tipos de proyecto.</h2>
+    <section class="section contact-section" id="contact">
+      <div class="shell contact-card glass reveal">
+        <div>
+          <p class="eyebrow">START A PROJECT</p>
+          <h2>¿Quieres llevar Gynoid a tu proyecto?</h2>
+          <p>Cuéntanos dónde quieres instalarlo y qué tipo de experiencia buscas.</p>
         </div>
-
-        <div class="use-case-grid">
-          <article class="use-case-card reveal"><span>01</span><h3>Clubs premium</h3><p>Para elevar imagen, operación y propuesta de valor del club.</p></article>
-          <article class="use-case-card reveal"><span>02</span><h3>Resorts & hospitality</h3><p>Para convertir la pista en una experiencia memorable del destino.</p></article>
-          <article class="use-case-card reveal"><span>03</span><h3>Real estate</h3><p>Para integrar deporte, lifestyle e innovación dentro del proyecto.</p></article>
-          <article class="use-case-card reveal"><span>04</span><h3>Eventos & marcas</h3><p>Para crear una plataforma visual potente para activaciones y contenido.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section gallery" id="gallery">
-      <div class="shell">
-        <div class="section-heading reveal gallery-heading narrow-heading">
-          <p class="eyebrow">07 / VISUAL GALLERY</p>
-          <h2>Una galería para entender el producto casi sin leer.</h2>
-        </div>
-        <div class="gallery-grid gallery-grid-large">
-          <button class="gallery-item gallery-hero image-button reveal" data-lightbox="assets/images/v4/hero-court.png"><img src="assets/images/v4/hero-court.png" alt="Vista general de una pista Gynoid" loading="lazy" decoding="async" /></button>
-          <button class="gallery-item image-button reveal" data-lightbox="assets/images/v4/ai-cameras.png"><img src="assets/images/v4/ai-cameras.png" alt="Sistema Gynoid AI" loading="lazy" decoding="async" /></button>
-          <button class="gallery-item image-button reveal" data-lightbox="assets/images/v4/smart-access.png"><img src="assets/images/v4/smart-access.png" alt="Acceso inteligente Gynoid" loading="lazy" decoding="async" /></button>
-          <button class="gallery-item image-button reveal" data-lightbox="assets/images/v4/led-media.png"><img src="assets/images/v4/led-media.png" alt="Pista Gynoid con media LED" loading="lazy" decoding="async" /></button>
-          <button class="gallery-item image-button reveal" data-lightbox="assets/images/v4/retractable-roof.png"><img src="assets/images/v4/retractable-roof.png" alt="Techo retráctil Gynoid" loading="lazy" decoding="async" /></button>
-          <button class="gallery-item image-button reveal" data-lightbox="assets/images/v4/solar-glass.png"><img src="assets/images/v4/solar-glass.png" alt="Vidrio solar Gynoid" loading="lazy" decoding="async" /></button>
-          <button class="gallery-item gallery-wide image-button reveal" data-lightbox="assets/images/v4/premium-equipment.png"><img src="assets/images/v4/premium-equipment.png" alt="Equipamiento premium Gynoid" loading="lazy" decoding="async" /></button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section faq-section">
-      <div class="shell faq-grid">
-        <div class="section-heading reveal narrow-heading">
-          <p class="eyebrow">08 / FAQ</p>
-          <h2>Preguntas clave, respuestas rápidas.</h2>
-        </div>
-
-        <div class="faq-list reveal">
-          <details class="faq-item" open>
-            <summary>¿Gynoid vende solo la pista o un sistema completo?</summary>
-            <p>La fortaleza está en el sistema completo: pista premium + capas tecnológicas + experiencia visual y operativa alrededor.</p>
-          </details>
-          <details class="faq-item">
-            <summary>¿Las soluciones se pueden entender por separado?</summary>
-            <p>Sí. La web está pensada para que cada módulo se entienda rápido: Court, AI, Access, Media, Climate y Energy.</p>
-          </details>
-          <details class="faq-item">
-            <summary>¿Qué funcionalidades son más visibles para un cliente final?</summary>
-            <p>Acceso inteligente, cámaras, analítica, vidrios LED, techo retráctil, look premium y la experiencia general del espacio.</p>
-          </details>
-          <details class="faq-item">
-            <summary>¿Qué valor aporta para negocio?</summary>
-            <p>Diferenciación, mejor experiencia, operación más ordenada, contenido, eventos, hospitality y oportunidades de activación y patrocinio.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="shell contact-panel glass reveal">
-        <div class="contact-glow" aria-hidden="true"></div>
-        <p class="eyebrow">BUILD THE NEXT COURT</p>
-        <h2>Si quieres construir algo realmente distinto, hablemos.</h2>
-        <p>Clubs, resorts, hospitality, real estate y proyectos singulares. Cuéntanos qué quieres desarrollar y diseñamos la experiencia alrededor.</p>
         <div class="contact-actions">
           <a class="button button-primary" data-contact-email href="#contact">Contactar con Gynoid</a>
-          <div class="social-links">
-            <a data-social="instagram" href="#" hidden>Instagram</a>
-            <a data-social="linkedin" href="#" hidden>LinkedIn</a>
-            <a data-social="whatsapp" href="#" hidden>WhatsApp</a>
-          </div>
+          <a class="button button-glass" href="#configurator">Configurar primero</a>
         </div>
-        <small class="contact-note">Configura email y redes en <code>js/config.js</code>.</small>
+        <small class="contact-note">Configura el email real en <code>js/config.js</code>.</small>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="shell footer-grid">
-      <a class="footer-brand" href="#top"><img src="assets/logo/gynoid-wordmark.jpg" alt="Gynoid" /></a>
+  <a class="floating-contact" href="#contact" aria-label="Contactar con Gynoid"><span></span>Hablar con Gynoid</a>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <img src="assets/logo/gynoid-logo-transparent.png" alt="Gynoid" />
       <p>Intelligent padel courts · Sports · Technology · Lifestyle</p>
       <span>© <span id="year"></span> Gynoid</span>
     </div>
   </footer>
-
-  <dialog class="lightbox" id="lightbox" aria-label="Vista ampliada">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">×</button>
-    <img id="lightboxImage" src="" alt="" />
-  </dialog>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>

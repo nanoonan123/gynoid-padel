@@ -1,17 +1,36 @@
-# Gynoid Web V6
+# Gynoid Web V7
 
-Versión premium evolucionada de la landing de Gynoid.
+Versión simplificada y más comercial de la web de Gynoid.
 
-## Novedades principales
-- Estética más premium, tipo Apple / glass.
-- Mejor adaptación a móvil.
-- Animaciones de scroll más avanzadas.
-- Nueva sección **Configura tu pista ideal** con preview conceptual 3D interactivo.
-- Hero más aspiracional y visual.
-- Arquitectura de contenidos más clara y más orientada a conversión.
+## Objetivos de esta versión
+- Explicar visualmente qué ofrece Gynoid.
+- Reducir texto y duplicidades.
+- Priorizar conversión y contacto.
+- Mejorar navegación móvil y menú lateral.
+- Presentar las funcionalidades en slides visuales.
+- Hacer el configurador 3D claramente interactivo.
+
+## Características
+- Logo GYNOID transparente, sin fondo sólido.
+- Hero más corto y directo.
+- Slider de 6 soluciones con swipe en móvil.
+- Menú lateral expandible/colapsable.
+- CTA de contacto fijo y CTA final.
+- Configurador 3D CSS/JavaScript con:
+  - contexto Club / Resort / Urban
+  - Day / Night
+  - techo retráctil
+  - Gynoid AI
+  - Media LED
+  - Smart Access
+  - Solar Glass
+  - Premium Comfort
+  - rotación manual arrastrando la pista
+- Responsive para móvil, tablet y escritorio.
 
 ## Publicación
-Sube el contenido del ZIP a tu repositorio y publícalo con GitHub Pages.
+Es una web estática. No necesita Python, npm ni build.
+Sube la carpeta al repositorio y activa GitHub Pages.
 
-## Configuración
-Edita `js/config.js` para cambiar el email y las redes sociales.
+## Contacto
+Edita `js/config.js` y añade el email real de Gynoid.
